@@ -1,13 +1,13 @@
-function ColorMyVim(color)
-	color = color or "rose-pine"
+function ColorMyPencils(color)
+	color = color or "tokyonight-night"
 	vim.cmd.colorscheme(color)
 
-	vim.api.nvim_set_hl(0, 'Normal', {bg = "none"})
-	vim.api.nvim_set_hl(0, 'NormalFloat', {bg = "none"})
+    vim.api.nvim_set_hl(0, 'Normal', {bg = "none"})
+    vim.api.nvim_set_hl(0, 'NormalFloat', {bg = "none"})
 end
 
 return {
-  {
+    {
     'rose-pine/neovim',
     name = 'rose-pine',
     config = function()
@@ -16,7 +16,7 @@ return {
   },
   {
     'folke/tokyonight.nvim',
-    name = 'tokyo-night',
+    name = 'tokyonight-night',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
@@ -26,6 +26,8 @@ return {
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+
+      ColorMyPencils('tokyonight-night')
     end,
   },
 }
