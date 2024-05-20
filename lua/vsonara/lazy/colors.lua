@@ -1,23 +1,28 @@
 function ColorMyPencils(color)
-	color = color or "tokyonight-night"
-	vim.cmd.colorscheme(color)
+  color = color or 'tokyonight-night'
+  vim.cmd.colorscheme(color)
 
-    vim.api.nvim_set_hl(0, 'Normal', {bg = "none"})
-    vim.api.nvim_set_hl(0, 'NormalFloat', {bg = "none"})
+  -- this will make background transparent
+  --  vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+  -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 end
 
 return {
-    {
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+  },
+
+  {
     'rose-pine/neovim',
     name = 'rose-pine',
-    config = function()
-      vim.cmd 'colorscheme rose-pine'
-    end,
+    config = function() end,
   },
   {
     'folke/tokyonight.nvim',
     name = 'tokyonight-night',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    priority = 1000,
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
@@ -26,8 +31,7 @@ return {
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
-
-      ColorMyPencils('tokyonight-night')
+      ColorMyPencils 'tokyonight-night'
     end,
   },
 }
