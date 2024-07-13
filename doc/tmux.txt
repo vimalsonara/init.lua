@@ -1,3 +1,8 @@
-set following line in tmux.conf in home dir to colorscheme work perfectly in tmux
+# set following line in tmux.conf in home dir to colorscheme work perfectly in tmux
 run echo $TERM to check the terminal outside tmux and set it to xterm-256color
 set-option -sa terminal-features ',xterm-256color:RGB'
+
+# Add following 2 lines in ~/.bashrc to fix tmux icon issue
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+
