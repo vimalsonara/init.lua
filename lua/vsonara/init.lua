@@ -1,3 +1,3 @@
-require 'vsonara.lazy_init'
-require 'vsonara.set'
 require 'vsonara.remap'
+require 'vsonara.set'
+require 'vsonara.lazy_init'
