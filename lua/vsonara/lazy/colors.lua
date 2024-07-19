@@ -13,7 +13,9 @@ return {
     name = 'catppuccin',
     priority = 1000, -- Make sure to load this before all the other start plugins.
   },
-
+  {
+    "ellisonleao/gruvbox.nvim", name = 'gruvbox', priority = 1000, config = true,
+  },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
