@@ -11,8 +11,20 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+    {
+      'nvim-telescope/telescope-ui-select.nvim',
+      config = function()
+        require('telescope').setup {
+          extensions = {
+            ['ui-select'] = {
+              require('telescope.themes').get_dropdown {},
+            },
+          },
+        }
+        require('telescope').load_extension 'ui-select'
+      end,
+    },
+    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
     require('telescope').setup {
