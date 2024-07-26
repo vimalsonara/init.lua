@@ -26,11 +26,16 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-        astro = { 'prettierd', 'prettier' },
+        javascript = { { "prettierd", "prettier" } },
+        javascriptreact = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
+        typescriptreact = { { "prettierd", "prettier" } },
+        html = { "prettierd", "prettier" },
+        css = { "prettierd", "prettier" },
+        json = { "prettierd", "prettier" },
+        markdown = { "prettierd", "prettier" },
+        yaml = { "prettierd", "prettier" },
+        -- python = { "black", "isort" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
