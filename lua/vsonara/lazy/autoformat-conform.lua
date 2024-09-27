@@ -13,14 +13,11 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true, -- Change this to true for error notifications
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 2000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -30,18 +27,33 @@ return {
         javascriptreact = { { "prettierd", "prettier" } },
         typescript = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
-        html = { "prettierd", "prettier" },
-        css = { "prettierd", "prettier" },
-        json = { "prettierd", "prettier" },
-        markdown = { "prettierd", "prettier" },
-        yaml = { "prettierd", "prettier" },
-        -- python = { "black", "isort" },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
+        html = { { "prettierd", "prettier" } },
+        css = { { "prettierd", "prettier" } },
+        json = { { "prettierd", "prettier" } },
+        markdown = { { "prettierd", "prettier" } },
+        yaml = { { "prettierd", "prettier" } },
+        mdx = { { "prettierd", "prettier" } },
       },
     },
+    config = function(_, opts)
+      local conform = require("conform")
+
+      conform.setup(opts)
+
+      -- Add logging
+      -- conform.formatters.prettier = {
+      --   prepend_args = function()
+      --     print("Prettier formatter called")
+      --     return {}
+      --   end
+      -- }
+
+      -- Log when format_on_save is triggered
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        callback = function()
+          print("Format on save triggered for buffer: " .. vim.fn.bufname())
+        end,
+      })
+    end,
   },
 }
